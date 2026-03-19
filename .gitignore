@@ -1,13 +1,23 @@
-# 编译输出
+# Xcode
+*.xcodeproj
+*.xcworkspace
+xcuserdata/
+*.xcuserstate
+# Compile output
 build/
 DerivedData/
 *.o
 *.out
 *.app
+*.exe
+scheduler
 
-# macOS 系统文件
+# macOS system files
 .DS_Store
 
-# Xcode 个人设置
+# Xcode Personal Settings
 *.xcuserdata
 *.xcworkspace
+
+# runtime data
+tasks.txt
