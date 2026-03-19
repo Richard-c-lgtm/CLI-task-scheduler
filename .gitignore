@@ -1,0 +1,13 @@
+# 编译输出
+build/
+DerivedData/
+*.o
+*.out
+*.app
+
+# macOS 系统文件
+.DS_Store
+
+# Xcode 个人设置
+*.xcuserdata
+*.xcworkspace
