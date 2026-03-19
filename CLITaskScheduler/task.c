@@ -4,42 +4,6 @@
 # include <string.h>
 #include <stdio.h>
 
-/*
- 二叉堆的实现逻辑：
-    
-    逻辑上其是一个树，本质上还是一个动态数组。
-        和传统的二叉树用left_child，right_child比，二叉堆直接用数值计算
-            假设当前节点为i
-            父节点：(i-1)/2
-            左子节点：2*i+1
-            右子节点：2*i+2
-        计算机只需要处理数字计算，效率极高。
- 
-    堆的性质：每一个节点 ≥ 它的子节点，不管同层的兄弟节点。
-    计算机在执行的时候比如当前有如下的结构
-            5
-          4   3
-        4
-        这个结构是完全合法的堆，堆只用保证同一个线路下自上而下是降序的就行了
-        因为当5被执行完取出去后会执行一次
- */
-
-/*
- 执行顺序：
-    1. 先创建队列
-    2. 插入任务
-        2.1 比较节点
-        2.2 交换节点【如有需要的话】
-    3. 完成任务打标签
-    4. 删除目标节点
-    5. 释放所有任务及队列本身
- 
- 工具：
-    返回堆顶指针
-    取出堆顶
- 
- */
-
 
 TaskManager * tmCreate(void){
     // Create and Initialize TaskManager System.
@@ -93,14 +57,7 @@ static void swap(TaskManager * tm , int i , int j){
 
 void siftUp(TaskManager * tm , int i){
     // Node i is compared with its parent node; if the node with higher priority is selected, it is sifted up.【It's still needed in data loading.】
-    /*
-     index 为i的元素先和父节点进行对比
-        判断子节点index值是否处于最高点上
-        1. 如果优先级低于父节点则退出循环
-        2. 如果优先级高于父节点则进行交换
-            通过swap函数交换两个节点的位置
-            将父节点index值赋值给子节点
-     */
+
     while(i != 0){
         int parentIndex = (i - 1) / 2;
         if(tm -> tasks[i] -> priority <= tm -> tasks[parentIndex] -> priority){
@@ -114,14 +71,7 @@ void siftUp(TaskManager * tm , int i){
 
 static void siftDown(TaskManager * tm , int i){
     // Internal function: Node i is compared with its left and right child nodes; if the node with lower priority is sifted down.
-    /*
-     index 为i的元素先和左右子节点进行对比
-        判断当前节点index值是否还有子节点
-        1. 如果优先级高于两个子节点则退出循环
-        2. 如果优先级低于某一个子节点则进行交换
-            通过swap函数交换两个节点的位置
-            将子节点index值赋值给当前节点
-     */
+
     if((2*i+1) > tm ->size || (2*i+2) > tm -> size){
         // There is no child node for this node.
         return;
