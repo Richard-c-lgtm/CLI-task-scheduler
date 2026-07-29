@@ -1,0 +1,27 @@
+{
+  "tests": 3,
+  "name": "AllTests",
+  "testsuites": [
+    {
+      "name": "TaskManagerTest",
+      "tests": 3,
+      "testsuite": [
+        {
+          "name": "Initialization",
+          "file": "\/Users\/chenhao\/Desktop\/ProgramingForJob\/CLITaskScheduler\/Program\/CLITaskScheduler\/test_task.cpp",
+          "line": 10
+        },
+        {
+          "name": "PushAndPrioritySorting",
+          "file": "\/Users\/chenhao\/Desktop\/ProgramingForJob\/CLITaskScheduler\/Program\/CLITaskScheduler\/test_task.cpp",
+          "line": 22
+        },
+        {
+          "name": "PopAndSiftDown",
+          "file": "\/Users\/chenhao\/Desktop\/ProgramingForJob\/CLITaskScheduler\/Program\/CLITaskScheduler\/test_task.cpp",
+          "line": 42
+        }
+      ]
+    }
+  ]
+}

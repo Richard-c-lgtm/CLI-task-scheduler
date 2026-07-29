@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/chenhao/Desktop/ProgramingForJob/CLITaskScheduler/Program/CLITaskScheduler/build/cmake_install.cmake",
+		"/Users/chenhao/Desktop/ProgramingForJob/CLITaskScheduler/Program/CLITaskScheduler/build/_deps/googletest-build/cmake_install.cmake",
+		"/Users/chenhao/Desktop/ProgramingForJob/CLITaskScheduler/Program/CLITaskScheduler/build/_deps/googletest-build/googlemock/cmake_install.cmake",
+		"/Users/chenhao/Desktop/ProgramingForJob/CLITaskScheduler/Program/CLITaskScheduler/build/_deps/googletest-build/googletest/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

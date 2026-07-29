@@ -1,0 +1,5 @@
+if(EXISTS "/Users/chenhao/Desktop/ProgramingForJob/CLITaskScheduler/Program/CLITaskScheduler/build/run_tests_e3b0c442_tests.cmake")
+  include("/Users/chenhao/Desktop/ProgramingForJob/CLITaskScheduler/Program/CLITaskScheduler/build/run_tests_e3b0c442_tests.cmake")
+else()
+  add_test(run_tests_NOT_BUILT run_tests_NOT_BUILT)
+endif()
