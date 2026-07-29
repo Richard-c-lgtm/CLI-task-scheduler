@@ -8,6 +8,7 @@ A lightweight command-line task management tool written in C, simulating task qu
 - Heap-based priority queue — urgent tasks are always processed first
 - File persistence — tasks are automatically saved and restored between sessions
 - Safe user input handling — no crashes on invalid or oversized input
+- Integrated GoogleTest framework with CMake to rigorously verify heap operations and edge cases.
 
 ## Technical Highlights
 
@@ -35,19 +36,41 @@ On startup, `storage_load` parses the file and rebuilds the heap. On exit, `stor
 ### Safe Input Handling
 `read_int` and `read_str` in `utils.c` guard against invalid input, buffer overflows, and empty input. Error states return `INVALID_INPUT` (defined via `#define`) for integers, and an empty string for string reads — allowing clean error checking in the caller without relying on magic numbers.
 
+### Unit Testing & C/C++ Interoperability
+- Adopted CMake (`FetchContent`) to automatically manage and build the GoogleTest suite without manual library installation.
+- Wrapped C core headers (`task.h`, `utilis.h`) in `extern "C"` blocks within C++ test suites (`test_task.cpp`). This ensures standard C linkage rules are applied while leveraging modern C++ testing assertions (`EXPECT_EQ`, `EXPECT_STREQ`).
+- Test suites explicitly target complex heap restructuring algorithms (`siftUp`, `siftDown`), node deletion from arbitrary indices, and boundary condition checks.
+
 ## Project Structure
 
 ```
 CLITaskScheduler/
-├── main.c        # Entry point, main loop, menu interaction
-├── task.h        # Struct definitions, function declarations
-├── task.c        # Heap operations: push, pop, peek, delete, sift_up, sift_down
+├── CMakeLists.txt  # Build configuration and FetchContent for GoogleTest
+├── main.c          # Entry point, main loop, menu interaction
+├── task.h          # Struct definitions, function declarations
+├── task.c          # Heap operations: push, pop, peek, delete, sift_up, sift_down
 ├── storage.h
-├── storage.c     # File I/O: load and save tasks
+├── storage.c       # File I/O: load and save tasks
 ├── utilis.h
-└── utilis.c      # Input handling and formatted output
+├── utilis.c        # Input handling and formatted output
+└── test_task.cpp   # Unit tests using GoogleTest framework
 ```
 
-## Background
+## Build & Run Unit Tests
 
-Built as a learning project to practice C fundamentals relevant to embedded and robotics development — including dynamic memory management, data structures, file I/O, and modular code organization.
+This project uses CMake and GoogleTest for automated testing.
+
+### Prerequisites
+* CMake (v3.14+)
+* GCC/Clang C/C++ Compilers
+
+### Build & Run
+```bash
+# 1. Create and enter build directory
+mkdir build && cd build
+
+# 2. Generate build system
+cmake ..
+
+# 3. Compile and execute tests
+make && ./run_tests
